@@ -1,5 +1,8 @@
 // Assignment code
 var finalPasswordLength;
+var lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+var upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specialCharacters = "!@#$%^&*_-+=";
 
 //need to prompt for password length (min 8 characters - max 128 characters)
 //validate that is not null
@@ -32,6 +35,7 @@ var passwordProperLength = function(passwordLength){
 
 
 //need to validate that is not a string
+//this function will handle validation
 var checkpasswordLengthType = function () {
 
     passwordLength = passwordLengthInput()   //call function to check is not empty
@@ -48,13 +52,16 @@ var checkpasswordLengthType = function () {
 
 
     } else {
-        window.alert("invalid input, must enter only numbers")
+        window.alert("invalid input, must enter only numbers") //is a string, restart function
         checkpasswordLengthType();
     };
 
+    finalPasswordLength = passwordLength;
 }
 
 checkpasswordLengthType()
+
+console.log(finalPasswordLength);
 
 //need to prompt for character types
 
