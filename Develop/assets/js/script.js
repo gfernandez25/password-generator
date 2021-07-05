@@ -1,12 +1,13 @@
-passwordGenInit();
+// Add click event listener
+document.getElementById("generate").addEventListener("click", passwordGenInit);
 
 function passwordGenInit() {
     var maxCharacterLength = checkLength();
     var characterTypeAnswers = characterTypes();
     var password = generatePassword(maxCharacterLength, characterTypeAnswers);
 
-    console.log(password);
-    // alert(password);
+    document.getElementById("password").innerHTML = password;
+
 }
 
 function checkLength() {
@@ -60,14 +61,12 @@ function characterTypes() {
     return characterTypeObj;
 }
 
-function generatePassword(maxCharacterLength, characterTypeSet) {
+function generatePassword(passwordLength, characterTypeSet) {
     var password ="";
 
-    for (var i = 0; i < maxCharacterLength; i++) {
+    for (var i = 0; i < passwordLength; i++) {
         password += _randomCharacterGenerator(characterTypeSet)
     }
-
-    console.log("generatePassword", password);
     return password;
 }
 
@@ -105,160 +104,4 @@ function _randomCharacterGenerator(characterTypeSet) {
 }
 
 
-// // Assignment code
-// var finalPasswordLength;
-// var lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
-// var upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-// var specialCharacters = "!@#$%^&*_-+=";
-//
-// //need to prompt for password length (min 8 characters - max 128 characters)
-// //validate that is not null
-//
-//
-//
-// var passwordLengthInput = function () {
-//
-//     var passwordLength;
-//
-//     while (!!passwordLength) { // check for null , empty or undefined and goes into the loop
-//
-//         var passwordLength = window.prompt('Please select password length :  between 8 and 128 characters');
-//
-//         if (passwordLength === "" || passwordLength === null) {
-//
-//             window.alert("password cannot be empty") //evaluate to put message out
-//         }
-//     }
-//     return passwordLength;
-// };
-//
-// //validates that the number entered is between 8 and 128
-// var passwordProperLength = function (passwordLength) {
-//
-//     if (passwordLength < 8 || passwordLength > 128) {
-//
-//         window.alert("password length must be between 8 and 128 characters")
-//         checkpasswordLengthType();
-//     }
-//     return passwordLength;
-// }
-//
-//
-// //need to validate that is not a string
-// //this function will handle validation
-// var checkpasswordLengthType = function () {
-//
-//     passwordLength = passwordLengthInput()   //call function to check is not empty
-//
-//     // passwordLength = (Number.parseInt(passwordLength, 10))  //try to convert to int
-//     //
-//     // console.log(passwordLength); //just testing
-//     //
-//     //
-//     // //if the value was successfully converted  then check for proper length
-//     // if (Number.isInteger(passwordLength)) {
-//     //
-//     //     passwordProperLength(passwordLength); //function to check for proper length
-//     //
-//     //
-//     // } else {
-//     //     window.alert("invalid input, must enter only numbers") //is a string, restart function
-//     //     checkpasswordLengthType();
-//     // }
-//     // ;
-//     //
-//     // finalPasswordLength = passwordLength;
-// }
-//
-// checkpasswordLengthType()
-// console.log(finalPasswordLength);
-//
-// //get all different types of characters
-// var gatherCharacterTypes = function () {
-//
-//
-// //need to prompt for character types
-//
-// // lowercase
-//     var typeLowercase = window.confirm("Would you like to include lowercase letters in password");
-//
-//     console.log(typeLowercase);
-//
-// // uppercase
-//     var typeUppercase = window.confirm("Would you like to include uppercase letters in password");
-//
-//     console.log(typeUppercase);
-//
-// // numeric
-//     var typeNumeric = window.confirm("Would you like to include numeric characters in password");
-//
-//     console.log(typeNumeric);
-//
-// // special characters
-//     var typeSpecialChar = window.confirm("Would you like to include special characters in password");
-//     console.log(typeSpecialChar);
-//
-//     return selectionTypeArray = [typeLowercase, typeUppercase, typeNumeric, typeSpecialChar]; //try to return array
-//
-//
-// }
-// //need to make sure that at least one character type is selected (true)
-//
-// //gatherCharacterTypes()
-//
-// //console.log(selectionTypeArray);
-//
-// var validateSelectionType = function () {
-//
-//     var selectionTypeArray = gatherCharacterTypes(); //array of boolean values
-//
-//     var selectionValidation = false; //initialises as false, will change if any element in the array is true
-//
-//     //while (selectionValidation === false) {
-//
-//         for (var i = 0; i < selectionTypeArray.length; i++) {
-//
-//             if (selectionTypeArray[i] === true) {
-//                 selectionValidation = true;
-//
-//             }
-//
-//         }
-//         console.log(selectionValidation)
-//
-//     if (selectionValidation === false){
-//         alert("you must select at least a character type for password");
-//     }
-//
-// }
-//
-// //validateSelectionType()
-//
-// console.log(selectionTypeArray);
-//
-// //validateSelectionType();
-//
-// //password is generated that matches the selected criteria
-//
-// var generatePassword = function () {
-//
-// }
-//
-// //password is either displayed in an alert or written to the page
-//
-//
-// // Get references to the #generate element
-// var generateBtn = document.querySelector("#generate");
-//
-// // Write password to the #password input
-//
-// function writePassword() {
-//     var password = generatePassword();
-//     var passwordText = document.querySelector("#password");
-//
-//     passwordText.value = password;
-//
-// }
-//
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+
